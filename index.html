@@ -1,0 +1,1629 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vortishop - The All-in-One Solution for Modern Businesses</title>
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Tajawal:wght@300;400;500;700&display=swap" rel="stylesheet">
+    
+    <!-- AOS Animation Library -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary-color: #469f98;
+            --secondary-color: #0b375f;
+            --light-gray: #d9d9d9;
+            --white: #ffffff;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            color: var(--secondary-color);
+            overflow-x: hidden;
+            background-color: #f8f9fa;
+        }
+        
+        body[dir="rtl"] {
+            font-family: 'Tajawal', sans-serif;
+        }
+        
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+        
+        ::-webkit-scrollbar-track {
+            background: var(--light-gray);
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background: var(--primary-color);
+            border-radius: 5px;
+        }
+        
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--secondary-color);
+        }
+        
+        /* Navigation */
+        .navbar {
+            background-color: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            padding: 15px 0;
+        }
+        
+        .navbar-brand {
+            font-weight: 700;
+            font-size: 1.5rem;
+            color: var(--secondary-color) !important;
+            transition: all 0.3s ease;
+        }
+        
+        .navbar-brand:hover {
+            transform: scale(1.05);
+        }
+        
+        .nav-link {
+            color: var(--secondary-color) !important;
+            font-weight: 500;
+            margin: 0 15px;
+            position: relative;
+            transition: all 0.3s ease;
+            padding: 8px 0 !important;
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            background-color: var(--primary-color);
+            bottom: 0;
+            left: 0;
+            transition: width 0.3s ease;
+        }
+        
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        
+        .nav-link:hover {
+            color: var(--primary-color) !important;
+        }
+        
+        .lang-toggle {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: var(--white);
+            border: none;
+            padding: 8px 20px;
+            border-radius: 25px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(70, 159, 152, 0.3);
+        }
+        
+        .lang-toggle:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(70, 159, 152, 0.4);
+        }
+        
+        /* Hero Section */
+        .hero-section {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: var(--white);
+            padding: 150px 0 100px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero-section::before {
+            content: "";
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 70%);
+            z-index: 1;
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+        
+        .hero-title {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            animation: fadeInUp 1s ease;
+        }
+        
+        .hero-subtitle {
+            font-size: 1.5rem;
+            font-weight: 300;
+            margin-bottom: 30px;
+            animation: fadeInUp 1s ease 0.2s;
+            animation-fill-mode: both;
+        }
+        
+        .hero-btn {
+            background-color: var(--white);
+            color: var(--secondary-color);
+            border: none;
+            padding: 15px 40px;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            display: inline-block;
+            animation: fadeInUp 1s ease 0.4s;
+            animation-fill-mode: both;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+        
+        .hero-btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+            color: var(--secondary-color);
+        }
+        
+        .hero-image {
+            position: relative;
+            animation: float 3s ease-in-out infinite;
+        }
+        
+        .hero-image img {
+            border-radius: 20px;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+            max-width: 100%;
+            height: auto;
+        }
+        
+        /* Video Section */
+        .video-section {
+            padding: 100px 0;
+            background-color: var(--white);
+            position: relative;
+        }
+        
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+            border-radius: 20px;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.2);
+            transition: all 0.3s ease;
+        }
+        
+        .video-container:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 30px 60px rgba(0,0,0,0.3);
+        }
+        
+        .video-container video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+            border-radius: 20px;
+        }
+        
+        .play-button {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 100px;
+            height: 100px;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            z-index: 2;
+            box-shadow: 0 10px 30px rgba(70, 159, 152, 0.5);
+        }
+        
+        .play-button:hover {
+            transform: translate(-50%, -50%) scale(1.1);
+            box-shadow: 0 15px 40px rgba(70, 159, 152, 0.7);
+        }
+        
+        .play-button i {
+            color: white;
+            font-size: 40px;
+            margin-left: 5px;
+        }
+        
+        /* Section Styles */
+        .section-padding {
+            padding: 100px 0;
+        }
+        
+        .section-title {
+            color: var(--secondary-color);
+            font-weight: 700;
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-title::after {
+            content: "";
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+            border-radius: 2px;
+        }
+        
+        body[dir="rtl"] .section-title::after {
+            left: auto;
+            right: 50%;
+            transform: translateX(50%);
+        }
+        
+        .section-subtitle {
+            font-size: 1.2rem;
+            color: #6c757d;
+            max-width: 700px;
+            margin: 0 auto 50px;
+            text-align: center;
+        }
+        
+        /* Feature Cards */
+        .feature-card {
+            background: var(--white);
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            padding: 40px 30px;
+            margin-bottom: 30px;
+            height: 100%;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(217, 217, 217, 0.5);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.3s ease;
+        }
+        
+        .feature-card:hover::before {
+            transform: scaleX(1);
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+        
+        .feature-icon {
+            font-size: 50px;
+            color: var(--primary-color);
+            margin-bottom: 25px;
+            display: inline-block;
+            transition: all 0.3s ease;
+        }
+        
+        .feature-card:hover .feature-icon {
+            transform: scale(1.1);
+            color: var(--secondary-color);
+        }
+        
+        .feature-card h4 {
+            font-weight: 600;
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            color: var(--secondary-color);
+        }
+        
+        .feature-card p {
+            color: #6c757d;
+            line-height: 1.6;
+        }
+        
+        /* Package Cards */
+        .package-card {
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+            margin-bottom: 30px;
+            transition: all 0.3s ease;
+            background: var(--white);
+            border: 1px solid rgba(217, 217, 217, 0.5);
+        }
+        
+        .package-card:hover {
+            transform: translateY(-15px);
+            box-shadow: 0 25px 50px rgba(0,0,0,0.2);
+        }
+        
+        .package-header {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: var(--white);
+            padding: 30px 20px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .package-header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 70%);
+        }
+        
+        .package-header h3 {
+            font-weight: 700;
+            font-size: 1.8rem;
+            margin-bottom: 0;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .package-body {
+            padding: 40px 30px;
+        }
+        
+        .package-body h5 {
+            color: var(--primary-color);
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+        
+        .package-body ul {
+            list-style: none;
+            padding: 0;
+            margin-bottom: 20px;
+        }
+        
+        .package-body ul li {
+            padding: 10px 0;
+            border-bottom: 1px solid rgba(217, 217, 217, 0.5);
+            display: flex;
+            align-items: center;
+        }
+        
+        .package-body ul li:last-child {
+            border-bottom: none;
+        }
+        
+        .package-body ul li i {
+            color: var(--primary-color);
+            margin-right: 10px;
+            font-size: 1.2rem;
+        }
+        
+        .package-body p {
+            text-align: center;
+            margin-top: 20px;
+            font-weight: 500;
+            color: #6c757d;
+        }
+        
+        /* Stats Cards */
+        .stats-card {
+            background: var(--white);
+            border-radius: 20px;
+            padding: 40px 30px;
+            text-align: center;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+            margin-bottom: 30px;
+            height: 100%;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(217, 217, 217, 0.5);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .stats-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(70, 159, 152, 0.05), rgba(11, 55, 95, 0.05));
+            z-index: 0;
+        }
+        
+        .stats-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 25px 50px rgba(0,0,0,0.15);
+        }
+        
+        .stats-number {
+            font-size: 3.5rem;
+            font-weight: 700;
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 15px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .stats-card h4 {
+            font-weight: 600;
+            font-size: 1.3rem;
+            color: var(--secondary-color);
+            margin-bottom: 20px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .progress {
+            height: 8px;
+            border-radius: 10px;
+            background-color: var(--light-gray);
+            overflow: visible;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .progress-bar {
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+            border-radius: 10px;
+            position: relative;
+            overflow: visible;
+        }
+        
+        .progress-bar::after {
+            content: '';
+            position: absolute;
+            top: -5px;
+            right: -5px;
+            width: 18px;
+            height: 18px;
+            background-color: var(--white);
+            border: 3px solid var(--primary-color);
+            border-radius: 50%;
+        }
+        
+        /* Benefit Cards */
+        .benefit-card {
+            background: var(--white);
+            border-radius: 20px;
+            padding: 40px 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+            height: 100%;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(217, 217, 217, 0.5);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .benefit-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 5px;
+            height: 100%;
+            background: linear-gradient(180deg, var(--primary-color), var(--secondary-color));
+            transform: scaleY(0);
+            transform-origin: top;
+            transition: transform 0.3s ease;
+        }
+        
+        .benefit-card:hover::before {
+            transform: scaleY(1);
+        }
+        
+        .benefit-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 25px 50px rgba(0,0,0,0.15);
+        }
+        
+        .benefit-card .feature-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, rgba(70, 159, 152, 0.1), rgba(11, 55, 95, 0.1));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 25px;
+            transition: all 0.3s ease;
+        }
+        
+        .benefit-card:hover .feature-icon {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: var(--white);
+        }
+        
+        .benefit-card h4 {
+            font-weight: 600;
+            font-size: 1.4rem;
+            margin-bottom: 15px;
+            color: var(--secondary-color);
+        }
+        
+        .benefit-card p {
+            color: #6c757d;
+            line-height: 1.6;
+        }
+        
+        /* Feature Image */
+        .feature-image {
+            border-radius: 20px;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.2);
+            width: 100%;
+            height: auto;
+            transition: all 0.3s ease;
+        }
+        
+        .feature-image:hover {
+            transform: scale(1.02);
+        }
+        
+        /* Buttons */
+        .btn-primary-custom {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: var(--white);
+            border: none;
+            padding: 15px 40px;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            display: inline-block;
+            box-shadow: 0 10px 30px rgba(70, 159, 152, 0.3);
+        }
+        
+        .btn-primary-custom:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(70, 159, 152, 0.4);
+            color: var(--white);
+        }
+        
+        /* Backgrounds */
+        .bg-light-gray {
+            background-color: var(--light-gray);
+        }
+        
+        .bg-primary {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+        }
+        
+        .bg-secondary {
+            background-color: var(--secondary-color);
+        }
+        
+        /* Text Colors */
+        .text-primary {
+            color: var(--primary-color);
+        }
+        
+        .text-secondary {
+            color: var(--secondary-color);
+        }
+        
+        /* Footer */
+        .footer {
+            background: linear-gradient(135deg, var(--secondary-color), var(--primary-color));
+            color: var(--white);
+            padding: 80px 0 30px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiPjxkZWZzPjxwYXR0ZXJuIGlkPSJwYXR0ZXJuIiB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHBhdHRlcm5Vbml0cz0idXNlclNwYWNlT25Vc2UiIHBhdHRlcm5UcmFuc2Zvcm09InJvdGF0ZSg0NSkiPjxyZWN0IHg9IjAiIHk9IjAiIHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCIgZmlsbD0icmdiYSgyNTUsIDI1NSwgMjU1LCAwLjAzKSIvPjwvcGF0dGVybj48L2RlZnM+PHJlY3Qgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0idXJsKCNwYXR0ZXJuKSIvPjwvc3ZnPg==');
+            opacity: 0.1;
+        }
+        
+        .footer-logo {
+            height: 60px;
+            margin-bottom: 20px;
+            filter: brightness(0) invert(1);
+        }
+        
+        .footer h5 {
+            font-weight: 600;
+            font-size: 1.3rem;
+            margin-bottom: 25px;
+            position: relative;
+            padding-bottom: 15px;
+        }
+        
+        .footer h5::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background-color: var(--primary-color);
+            border-radius: 2px;
+        }
+        
+        .footer ul {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .footer ul li {
+            margin-bottom: 12px;
+        }
+        
+        .footer ul li a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: inline-block;
+            position: relative;
+        }
+        
+        .footer ul li a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            background-color: var(--primary-color);
+            bottom: 0;
+            left: 0;
+            transition: width 0.3s ease;
+        }
+        
+        .footer ul li a:hover {
+            color: var(--white);
+            padding-left: 5px;
+        }
+        
+        .footer ul li a:hover::after {
+            width: 100%;
+        }
+        
+        .social-links {
+            margin-top: 20px;
+        }
+        
+        .social-links a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 45px;
+            height: 45px;
+            background-color: rgba(255, 255, 255, 0.1);
+            color: var(--white);
+            border-radius: 50%;
+            margin-right: 15px;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+        }
+        
+        .social-links a:hover {
+            background-color: var(--primary-color);
+            transform: translateY(-5px);
+        }
+        
+        .footer hr {
+            background-color: rgba(255, 255, 255, 0.1);
+            margin: 40px 0 20px;
+        }
+        
+        .powered-by {
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.6);
+            margin-top: 15px;
+        }
+        
+        /* Brand Logos */
+        .brand-logo {
+            height: 40px;
+        }
+        
+        .footer-logo {
+            height: 60px;
+            margin-bottom: 15px;
+            filter: brightness(0) invert(1);
+        }
+        
+        /* Check Icons */
+        .fas.fa-check, .fas.fa-check-circle {
+            color: #469f98;
+        }
+        
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes float {
+            0% {
+                transform: translateY(0px);
+            }
+            50% {
+                transform: translateY(-20px);
+            }
+            100% {
+                transform: translateY(0px);
+            }
+        }
+        
+        /* Responsive */
+        @media (max-width: 992px) {
+            .hero-title {
+                font-size: 3rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 1.3rem;
+            }
+            
+            .section-title {
+                font-size: 2.2rem;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .hero-section {
+                padding: 100px 0 70px;
+            }
+            
+            .section-padding {
+                padding: 70px 0;
+            }
+            
+            .video-section {
+                padding: 70px 0;
+            }
+            
+            .hero-title {
+                font-size: 2.5rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 1.1rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .brand-logo {
+                height: 30px;
+            }
+            
+            .footer-logo {
+                height: 50px;
+            }
+            
+            .nav-link {
+                margin: 5px 15px;
+            }
+            
+            .feature-card, .package-card, .stats-card, .benefit-card {
+                margin-bottom: 20px;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .hero-title {
+                font-size: 2rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 1rem;
+            }
+            
+            .section-title {
+                font-size: 1.8rem;
+            }
+            
+            .stats-number {
+                font-size: 2.5rem;
+            }
+            
+            .play-button {
+                width: 80px;
+                height: 80px;
+            }
+            
+            .play-button i {
+                font-size: 30px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <img src="assets/logo.png" alt="Vortishop Logo" class="brand-logo">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#home" data-en="Home" data-ar="الرئيسية">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#about" data-en="About" data-ar="من نحن">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#features" data-en="Features" data-ar="الميزات">Features</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#packages" data-en="Packages" data-ar="الباقات">Packages</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#benefits" data-en="Benefits" data-ar="الفوائد">Benefits</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contact" data-en="Contact" data-ar="اتصل بنا">Contact</a>
+                    </li>
+                    <li class="nav-item ms-3">
+                        <button class="lang-toggle" id="langToggle">العربية</button>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero-section">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 hero-content">
+                    <h1 class="hero-title" data-en="Vortishop" data-ar="فورتي شوب">Vortishop</h1>
+                    <p class="hero-subtitle" data-en="The All-in-One Solution for Modern Businesses" data-ar="الحل الشامل للأعمال الحديثة">The All-in-One Solution for Modern Businesses</p>
+                    <a href="#contact" class="hero-btn" data-en="Get Started" data-ar="ابدأ الآن">Get Started</a>
+                </div>
+                <div class="col-lg-6 text-center hero-image">
+                    <img src="assets/hero-image.jpg" alt="Vortishop Dashboard">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Explainer Video Section -->
+    <section class="video-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center mb-5" data-aos="fade-up">
+                    <h2 class="section-title" data-en="See Vortishop in Action" data-ar="شاهد فورتي شوب في العمل">See Vortishop in Action</h2>
+                    <p class="section-subtitle" data-en="Watch our explainer video to discover how Vortishop can transform your business" data-ar="شاهد الفيديو التوضيحي لاكتشاف كيف يمكن لفورتي شوب تحويل عملك">Watch our explainer video to discover how Vortishop can transform your business</p>
+                </div>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-lg-10" data-aos="zoom-in">
+                    <div class="video-container">
+                        <video id="explainerVideo" poster="assets/video-thumbnail.jpg">
+                            <source src="assets/vortishop-explainer.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                        <div class="play-button" id="playButton">
+                            <i class="fas fa-play"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row mt-4">
+                <div class="col-lg-12 text-center">
+                    <p class="powered-by" data-en="Powered by Vortigate" data-ar="مدعوم من فورتي جيت">Powered by Vortigate</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Introduction Section -->
+    <section id="about" class="section-padding">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center mb-5" data-aos="fade-up">
+                    <h2 class="section-title" data-en="Introduction to Vortishop" data-ar="مقدمة عن فورتي شوب">Introduction to Vortishop</h2>
+                </div>
+            </div>
+            <div class="row align-items-center">
+                <div class="col-lg-6 mb-4" data-aos="fade-right">
+                    <p class="mb-4" data-en="Vortishop is a comprehensive business solution powered by Vortigate, designed to streamline operations and enhance customer experiences." data-ar="فورتي شوب هو حل عمل شامل مدعوم من فورتي جيت، مصمم لتبسيط العمليات وتعزيز تجارب العملاء.">
+                        Vortishop is a comprehensive business solution powered by Vortigate, designed to streamline operations and enhance customer experiences.
+                    </p>
+                    <p class="mb-4" data-en="In today's digital landscape, businesses need integrated tools that work together seamlessly. Vortishop addresses this need by providing:" data-ar="في المشهد الرقمي اليوم، تحتاج الشركات إلى أدوات متكاملة تعمل معًا بسلاسة. يلبي فورتي شوب هذه الحاجة من خلال توفير:">
+                        In today's digital landscape, businesses need integrated tools that work together seamlessly. Vortishop addresses this need by providing:
+                    </p>
+                    <ul class="list-unstyled">
+                        <li class="mb-3"><i class="fas fa-check-circle me-2"></i> <span data-en="A unified platform for managing all aspects of business operations" data-ar="منصة موحدة لإدارة جميع جوانب العمليات التجارية">A unified platform for managing all aspects of business operations</span></li>
+                        <li class="mb-3"><i class="fas fa-check-circle me-2"></i> <span data-en="Customizable solutions that scale with your business needs" data-ar="حلول قابلة للتخصيص تتوسع مع احتياجات عملك">Customizable solutions that scale with your business needs</span></li>
+                        <li class="mb-3"><i class="fas fa-check-circle me-2"></i> <span data-en="Seamless integration between in-store and online experiences" data-ar="تكامل سلس بين التجارب داخل المتجر وعبر الإنترنت">Seamless integration between in-store and online experiences</span></li>
+                        <li class="mb-3"><i class="fas fa-check-circle me-2"></i> <span data-en="Data-driven insights to optimize business performance" data-ar="رؤى قائمة على البيانات لتحسين أداء العمل">Data-driven insights to optimize business performance</span></li>
+                    </ul>
+                    <p class="mt-4" data-en="Vortishop empowers businesses of all sizes to thrive in the digital age with tools that enhance efficiency and customer satisfaction." data-ar="يمكن فورتي شوب الشركات من جميع الأحجام من الازدهار في العصر الرقمي باستخدام أدوات تعزز الكفاءة ورضا العملاء.">
+                        Vortishop empowers businesses of all sizes to thrive in the digital age with tools that enhance efficiency and customer satisfaction.
+                    </p>
+                </div>
+                <div class="col-lg-6 text-center" data-aos="fade-left">
+                    <img src="assets/intro-image.jpg" alt="Vortishop Introduction" class="feature-image">
+                </div>
+            </div>
+            <div class="text-center mt-4">
+                <p class="powered-by" data-en="STORE Powered by Vortigate" data-ar="متجر مدعوم من فورتي جيت">STORE Powered by Vortigate</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Core Capabilities Section -->
+    <section id="features" class="section-padding bg-light-gray">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center mb-5" data-aos="fade-up">
+                    <h2 class="section-title" data-en="Core Capabilities Overview" data-ar="نظرة عامة على القدرات الأساسية">Core Capabilities Overview</h2>
+                    <p class="section-subtitle" data-en="Discover the powerful features that make Vortishop the ultimate business solution" data-ar="اكتشف الميزات القوية التي تجعل فورتي شوب الحل النهائي للأعمال">Discover the powerful features that make Vortishop the ultimate business solution</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-3 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="100">
+                    <div class="feature-card text-center">
+                        <div class="feature-icon">
+                            <i class="fas fa-clipboard-list"></i>
+                        </div>
+                        <h4 data-en="Order Display Screen" data-ar="شاشة عرض الطلبات">Order Display Screen</h4>
+                        <p data-en="Real-time order tracking and management for staff" data-ar="تتبع الطلبات وإدارتها في الوقت الفعلي للموظفين">Real-time order tracking and management for staff</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="200">
+                    <div class="feature-card text-center">
+                        <div class="feature-icon">
+                            <i class="fas fa-qrcode"></i>
+                        </div>
+                        <h4 data-en="QR Menu" data-ar="قائمة QR">QR Menu</h4>
+                        <p data-en="Digital menus with optional ordering capabilities" data-ar="قوائم رقمية مع إمكانيات طلب اختيارية">Digital menus with optional ordering capabilities</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="300">
+                    <div class="feature-card text-center">
+                        <div class="feature-icon">
+                            <i class="fas fa-utensils"></i>
+                        </div>
+                        <h4 data-en="Kitchen Display Screen" data-ar="شاشة عرض المطبخ">Kitchen Display Screen</h4>
+                        <p data-en="Streamlined kitchen operations and order preparation" data-ar="عمليات مطبخ مبسطة وتحضير الطلبات">Streamlined kitchen operations and order preparation</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="400">
+                    <div class="feature-card text-center">
+                        <div class="feature-icon">
+                            <i class="fas fa-shopping-cart"></i>
+                        </div>
+                        <h4 data-en="E-commerce Store" data-ar="متجر التجارة الإلكترونية">E-commerce Store</h4>
+                        <p data-en="Complete online sales platform with multiple tiers" data-ar="منصة مبيعات عبر الإنترنت كاملة مع مستويات متعددة">Complete online sales platform with multiple tiers</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="500">
+                    <div class="feature-card text-center">
+                        <div class="feature-icon">
+                            <i class="fas fa-cash-register"></i>
+                        </div>
+                        <h4 data-en="POS System" data-ar="نظام نقطة البيع">POS System</h4>
+                        <p data-en="Comprehensive point-of-sale with optional inventory" data-ar="نظام نقطة البيع الشامل مع مخزون اختياري">Comprehensive point-of-sale with optional inventory</p>
+                    </div>
+                </div>
+            </div>
+            <div class="row mt-4">
+                <div class="col-lg-12 text-center" data-aos="fade-up">
+                    <p data-en="All features integrate seamlessly to create a unified business management ecosystem" data-ar="جميع الميزات تتكامل بسلاسة لإنشاء نظام إدارة أعمال موحد">All features integrate seamlessly to create a unified business management ecosystem</p>
+                    <p class="powered-by mt-3" data-en="Powered by Vortigate" data-ar="مدعوم من فورتي جيت">Powered by Vortigate</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Order Management Section -->
+    <section class="section-padding">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center mb-5" data-aos="fade-up">
+                    <h2 class="section-title" data-en="Feature Focus: Order Management" data-ar="التركيز على الميزة: إدارة الطلبات">Feature Focus: Order Management</h2>
+                    <p class="section-subtitle" data-en="Streamline your order process from customer to kitchen to delivery" data-ar="بسّط عملية طلبك من العميل إلى المطبخ إلى التسليم">Streamline your order process from customer to kitchen to delivery</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-6 mb-4" data-aos="fade-right">
+                    <div class="feature-card">
+                        <h3 class="mb-4 text-primary" data-en="Order Display Screen (ODS)" data-ar="شاشة عرض الطلبات (ODS)">Order Display Screen (ODS)</h3>
+                        <ul class="list-unstyled">
+                            <li class="mb-3"><i class="fas fa-check-circle me-2"></i> <span data-en="Real-time order tracking from placement to completion" data-ar="تتبع الطلبات في الوقت الفعلي من التقديم إلى الإنجاز">Real-time order tracking from placement to completion</span></li>
+                            <li class="mb-3"><i class="fas fa-check-circle me-2"></i> <span data-en="Prioritizes tasks for efficient service" data-ar="يحدد أولويات المهام لخدمة فعالة">Prioritizes tasks for efficient service</span></li>
+                            <li class="mb-3"><i class="fas fa-check-circle me-2"></i> <span data-en="Reduces errors in order fulfillment" data-ar="يقلل من الأخطاء في تنفيذ الطلبات">Reduces errors in order fulfillment</span></li>
+                            <li class="mb-3"><i class="fas fa-check-circle me-2"></i> <span data-en="Intuitive interface for staff at all levels" data-ar="واجهة بديهية للموظفين على جميع المستويات">Intuitive interface for staff at all levels</span></li>
+                        </ul>
+                        <img src="assets/ods-image.jpg" alt="Order Display Screen" class="feature-image mt-4">
+                    </div>
+                </div>
+                <div class="col-lg-6 mb-4" data-aos="fade-left">
+                    <div class="feature-card">
+                        <h3 class="mb-4 text-primary" data-en="Kitchen Display Screen (KDS)" data-ar="شاشة عرض المطبخ (KDS)">Kitchen Display Screen (KDS)</h3>
+                        <ul class="list-unstyled">
+                            <li class="mb-3"><i class="fas fa-check-circle me-2"></i> <span data-en="Organized view of incoming orders for kitchen staff" data-ar="عرض منظم للطلبات الواردة لموظفي المطبخ">Organized view of incoming orders for kitchen staff</span></li>
+                            <li class="mb-3"><i class="fas fa-check-circle me-2"></i> <span data-en="Tracks preparation times for quality control" data-ar="يتتبع أوقات التحضير للتحكم في الجودة">Tracks preparation times for quality control</span></li>
+                            <li class="mb-3"><i class="fas fa-check-circle me-2"></i> <span data-en="Ensures correct preparation sequence" data-ar="يضمن تسلسل التحضير الصحيح">Ensures correct preparation sequence</span></li>
+                            <li class="mb-3"><i class="fas fa-check-circle me-2"></i> <span data-en="Synchronizes kitchen workflow with front-of-house" data-ar="يتزامن سير عمل المطبخ مع مقدمة المتجر">Synchronizes kitchen workflow with front-of-house</span></li>
+                        </ul>
+                        <img src="assets/kds-image.jpg" alt="Kitchen Display Screen" class="feature-image mt-4">
+                    </div>
+                </div>
+            </div>
+            <div class="row mt-4">
+                <div class="col-lg-12 text-center" data-aos="fade-up">
+                    <p data-en="Both systems work together to create a seamless order flow from customer to kitchen to delivery" data-ar="يعمل النظامان معًا لإنشاء تدفق طلبات سلس من العميل إلى المطبخ إلى التسليم">Both systems work together to create a seamless order flow from customer to kitchen to delivery</p>
+                    <p class="powered-by mt-3" data-en="Powered by Vortigate" data-ar="مدعوم من فورتي جيت">Powered by Vortigate</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Customer Engagement Section -->
+    <section class="section-padding bg-light-gray">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center mb-5" data-aos="fade-up">
+                    <h2 class="section-title" data-en="Feature Focus: Customer Engagement" data-ar="التركيز على الميزة: تفاعل العملاء">Feature Focus: Customer Engagement</h2>
+                    <p class="section-subtitle" data-en="Enhance customer experience with digital solutions" data-ar="عزز تجربة العملاء باستخدام الحلول الرقمية">Enhance customer experience with digital solutions</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-6 mb-4" data-aos="fade-right">
+                    <div class="feature-card">
+                        <h3 class="mb-4 text-primary" data-en="QR Menu" data-ar="قائمة QR">QR Menu</h3>
+                        <ul class="list-unstyled">
+                            <li class="mb-3"><i class="fas fa-check-circle me-2"></i> <span data-en="Contactless ordering directly from customer devices" data-ar="طلب بدون تلامس مباشرة من أجهزة العملاء">Contactless ordering directly from customer devices</span></li>
+                            <li class="mb-3"><i class="fas fa-check-circle me-2"></i> <span data-en="Real-time menu updates without reprinting costs" data-ar="تحديثات القائمة في الوقت الفعلي بدون تكاليف إعادة طباعة">Real-time menu updates without reprinting costs</span></li>
+                            <li class="mb-3"><i class="fas fa-check-circle me-2"></i> <span data-en="Available with or without ordering capabilities" data-ar="متوفر مع أو بدون إمكانيات الطلب">Available with or without ordering capabilities</span></li>
+                            <li class="mb-3"><i class="fas fa-check-circle me-2"></i> <span data-en="Enhanced hygiene and convenience for customers" data-ar="نظافة محسنة وراحة للعملاء">Enhanced hygiene and convenience for customers</span></li>
+                        </ul>
+                        <img src="assets/qr-menu-image.jpg" alt="QR Menu" class="feature-image mt-4">
+                    </div>
+                </div>
+                <div class="col-lg-6 mb-4" data-aos="fade-left">
+                    <div class="feature-card">
+                        <h3 class="mb-4 text-primary" data-en="E-commerce Store" data-ar="متجر التجارة الإلكترونية">E-commerce Store</h3>
+                        <ul class="list-unstyled">
+                            <li class="mb-3"><i class="fas fa-check-circle me-2"></i> <span data-en="Fully functional online storefront for products/services" data-ar="واجهة متجر عبر الإنترنت تعمل بكامل طاقتها للمنتجات/الخدمات">Fully functional online storefront for products/services</span></li>
+                            <li class="mb-3"><i class="fas fa-check-circle me-2"></i> <span data-en="Multiple package tiers to match business needs" data-ar="مستويات باقة متعددة لتلبية احتياجات العمل">Multiple package tiers to match business needs</span></li>
+                            <li class="mb-3"><i class="fas fa-check-circle me-2"></i> <span data-en="Integrated payment processing and inventory" data-ar="معالجة الدفع والمخزون المتكامل">Integrated payment processing and inventory</span></li>
+                            <li class="mb-3"><i class="fas fa-check-circle me-2"></i> <span data-en="Customizable templates to match brand identity" data-ar="قوالب قابلة للتخصيص لتتناسب مع هوية العلامة التجارية">Customizable templates to match brand identity</span></li>
+                        </ul>
+                        <img src="assets/ecommerce-image.jpg" alt="E-commerce Store" class="feature-image mt-4">
+                    </div>
+                </div>
+            </div>
+            <div class="row mt-4">
+                <div class="col-lg-12 text-center" data-aos="fade-up">
+                    <p data-en="Both features expand your business reach and enhance customer experience across physical and digital touchpoints" data-ar="توسع كلتا الميزتين نطاق عملك وتعزز تجربة العملاء عبر نقاط الاتصال المادية والرقمية">Both features expand your business reach and enhance customer experience across physical and digital touchpoints</p>
+                    <p class="powered-by mt-3" data-en="Powered by Vortigate" data-ar="مدعوم من فورتي جيت">Powered by Vortigate</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sales & Operations Section -->
+    <section class="section-padding">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center mb-5" data-aos="fade-up">
+                    <h2 class="section-title" data-en="Feature Focus: Sales & Operations" data-ar="التركيز على الميزة: المبيعات والعمليات">Feature Focus: Sales & Operations</h2>
+                    <p class="section-subtitle" data-en="Streamline your sales process with our comprehensive POS system" data-ar="بسّط عملية المبيعات لديك باستخدام نظام نقطة البيع الشامل لدينا">Streamline your sales process with our comprehensive POS system</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-6 mb-4" data-aos="fade-right">
+                    <div class="feature-card">
+                        <h3 class="mb-4 text-primary" data-en="POS System" data-ar="نظام نقطة البيع">POS System</h3>
+                        <h4 class="mb-3" data-en="Key Features" data-ar="الميزات الرئيسية">Key Features</h4>
+                        <ul class="list-unstyled mb-4">
+                            <li class="mb-3"><i class="fas fa-check-circle me-2"></i> <span data-en="Fast, reliable transaction processing" data-ar="معالجة المعاملات السريعة والموثوقة">Fast, reliable transaction processing</span></li>
+                            <li class="mb-3"><i class="fas fa-check-circle me-2"></i> <span data-en="Multiple payment method support" data-ar="دعم طرق دفع متعددة">Multiple payment method support</span></li>
+                            <li class="mb-3"><i class="fas fa-check-circle me-2"></i> <span data-en="Detailed sales analytics and reporting" data-ar="تحليلات المبيعات وتقارير مفصلة">Detailed sales analytics and reporting</span></li>
+                            <li class="mb-3"><i class="fas fa-check-circle me-2"></i> <span data-en="Employee management and permissions" data-ar="إدارة الموظفين والصلاحيات">Employee management and permissions</span></li>
+                        </ul>
+                        <h4 class="mb-3" data-en="Business Benefits" data-ar="فوائد العمل">Business Benefits</h4>
+                        <ul class="list-unstyled mb-4">
+                            <li class="mb-3"><i class="fas fa-check-circle me-2"></i> <span data-en="Reduced checkout times" data-ar="تقليل أوقات الدفع">Reduced checkout times</span></li>
+                            <li class="mb-3"><i class="fas fa-check-circle me-2"></i> <span data-en="Improved inventory accuracy" data-ar="تحسين دقة المخزون">Improved inventory accuracy</span></li>
+                            <li class="mb-3"><i class="fas fa-check-circle me-2"></i> <span data-en="Enhanced customer experience" data-ar="تحسين تجربة العميل">Enhanced customer experience</span></li>
+                            <li class="mb-3"><i class="fas fa-check-circle me-2"></i> <span data-en="Data-driven business decisions" data-ar="قرارات عمل قائمة على البيانات">Data-driven business decisions</span></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-6 mb-4" data-aos="fade-left">
+                    <div class="feature-card">
+                        <h3 class="mb-4 text-primary" data-en="Available Configurations" data-ar="التكوينات المتاحة">Available Configurations</h3>
+                        <div class="row">
+                            <div class="col-md-6 mb-4">
+                                <h5 class="text-primary" data-en="Without Inventory" data-ar="بدون مخزون">Without Inventory</h5>
+                                <ul class="list-unstyled">
+                                    <li class="mb-2"><i class="fas fa-check me-2"></i> <span data-en="Core sales transactions" data-ar="معاملات المبيعات الأساسية">Core sales transactions</span></li>
+                                    <li class="mb-2"><i class="fas fa-check me-2"></i> <span data-en="Payment processing" data-ar="معالجة الدفع">Payment processing</span></li>
+                                    <li class="mb-2"><i class="fas fa-check me-2"></i> <span data-en="Basic reporting" data-ar="تقارير أساسية">Basic reporting</span></li>
+                                </ul>
+                            </div>
+                            <div class="col-md-6 mb-4">
+                                <h5 class="text-primary" data-en="With Inventory" data-ar="مع المخزون">With Inventory</h5>
+                                <ul class="list-unstyled">
+                                    <li class="mb-2"><i class="fas fa-check me-2"></i> <span data-en="Real-time stock tracking" data-ar="تتبع المخزون في الوقت الفعلي">Real-time stock tracking</span></li>
+                                    <li class="mb-2"><i class="fas fa-check me-2"></i> <span data-en="Low-stock alerts" data-ar="تنبيهات المخزون المنخفض">Low-stock alerts</span></li>
+                                    <li class="mb-2"><i class="fas fa-check me-2"></i> <span data-en="Automated updates" data-ar="تحديثات تلقائية">Automated updates</span></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <img src="assets/pos-image.jpg" alt="POS System" class="feature-image mt-4">
+                    </div>
+                </div>
+            </div>
+            <div class="row mt-4">
+                <div class="col-lg-12 text-center" data-aos="fade-up">
+                    <p class="powered-by" data-en="Powered by Vortigate" data-ar="مدعوم من فورتي جيت">Powered by Vortigate</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Packages Section -->
+    <section id="packages" class="section-padding bg-light-gray">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center mb-5" data-aos="fade-up">
+                    <h2 class="section-title" data-en="Flexible Packages: Tailored Solutions" data-ar="باقات مرنة: حلول مخصصة">Flexible Packages: Tailored Solutions</h2>
+                    <p class="section-subtitle" data-en="Choose the package that best fits your business needs and scale as you grow" data-ar="اختر الباقة التي تناسب احتياجات عملك وتوسع مع نموك">Choose the package that best fits your business needs and scale as you grow</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-3 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="100">
+                    <div class="package-card">
+                        <div class="package-header">
+                            <h3 data-en="QR Package" data-ar="باقة QR">QR Package</h3>
+                        </div>
+                        <div class="package-body">
+                            <h5 class="text-primary mb-3" data-en="Basic: Digital menu without ordering" data-ar="أساسي: قائمة رقمية بدون طلب">Basic: Digital menu without ordering</h5>
+                            <h5 class="text-primary mb-3" data-en="Premium: With ordering capabilities" data-ar="مميز: مع إمكانيات الطلب">Premium: With ordering capabilities</h5>
+                            <ul class="list-unstyled">
+                                <li class="mb-2"><i class="fas fa-check me-2"></i> <span data-en="Real-time menu updates" data-ar="تحديثات القائمة في الوقت الفعلي">Real-time menu updates</span></li>
+                                <li class="mb-2"><i class="fas fa-check me-2"></i> <span data-en="Customizable design" data-ar="تصميم قابل للتخصيص">Customizable design</span></li>
+                                <li class="mb-2"><i class="fas fa-check me-2"></i> <span data-en="Analytics on views" data-ar="تحليلات المشاهدات">Analytics on views</span></li>
+                            </ul>
+                            <p class="text-center mt-3"><small data-en="Ideal for restaurants & cafes" data-ar="مثالي للمطاعم والمقاهي">Ideal for restaurants & cafes</small></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="200">
+                    <div class="package-card">
+                        <div class="package-header">
+                            <h3 data-en="E-commerce Package" data-ar="باقة التجارة الإلكترونية">E-commerce Package</h3>
+                        </div>
+                        <div class="package-body">
+                            <h5 class="text-primary mb-3" data-en="Standard: Basic online store" data-ar="قياسي: متجر أساسي عبر الإنترنت">Standard: Basic online store</h5>
+                            <h5 class="text-primary mb-3" data-en="Pro: Advanced features & marketing" data-ar="احترافي: ميزات متقدمة وتسويق">Pro: Advanced features & marketing</h5>
+                            <h5 class="text-primary mb-3" data-en="Unlimited: Full-scale solution" data-ar="غير محدود: حل كامل النطاق">Unlimited: Full-scale solution</h5>
+                            <ul class="list-unstyled">
+                                <li class="mb-2"><i class="fas fa-check me-2"></i> <span data-en="Payment gateway integration" data-ar="تكامل بوابة الدفع">Payment gateway integration</span></li>
+                                <li class="mb-2"><i class="fas fa-check me-2"></i> <span data-en="Customizable templates" data-ar="قوالب قابلة للتخصيص">Customizable templates</span></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="300">
+                    <div class="package-card">
+                        <div class="package-header">
+                            <h3 data-en="POS System Package" data-ar="باقة نظام نقطة البيع">POS System Package</h3>
+                        </div>
+                        <div class="package-body">
+                            <h5 class="text-primary mb-3" data-en="Basic: Without inventory management" data-ar="أساسي: بدون إدارة المخزون">Basic: Without inventory management</h5>
+                            <h5 class="text-primary mb-3" data-en="Advanced: With inventory management" data-ar="متقدم: مع إدارة المخزون">Advanced: With inventory management</h5>
+                            <ul class="list-unstyled">
+                                <li class="mb-2"><i class="fas fa-check me-2"></i> <span data-en="Multiple payment methods" data-ar="طرق دفع متعددة">Multiple payment methods</span></li>
+                                <li class="mb-2"><i class="fas fa-check me-2"></i> <span data-en="Sales reporting & analytics" data-ar="تقارير المبيعات والتحليلات">Sales reporting & analytics</span></li>
+                                <li class="mb-2"><i class="fas fa-check me-2"></i> <span data-en="Staff management" data-ar="إدارة الموظفين">Staff management</span></li>
+                            </ul>
+                            <p class="text-center mt-3"><small data-en="Ideal for all businesses" data-ar="مثالي لجميع الشركات">Ideal for all businesses</small></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="400">
+                    <div class="package-card">
+                        <div class="package-header bg-secondary">
+                            <h3 data-en="Enterprise Package" data-ar="باقة المؤسسات">Enterprise Package</h3>
+                        </div>
+                        <div class="package-body">
+                            <h5 class="text-primary mb-3" data-en="Complete integration of all features" data-ar="تكامل كامل لجميع الميزات">Complete integration of all features</h5>
+                            <ul class="list-unstyled">
+                                <li class="mb-2"><i class="fas fa-check me-2"></i> <span data-en="POS + E-commerce + QR capabilities" data-ar="نقطة البيع + التجارة الإلكترونية + قدرات QR">POS + E-commerce + QR capabilities</span></li>
+                                <li class="mb-2"><i class="fas fa-check me-2"></i> <span data-en="Advanced analytics dashboard" data-ar="لوحة تحليلات متقدمة">Advanced analytics dashboard</span></li>
+                                <li class="mb-2"><i class="fas fa-check me-2"></i> <span data-en="Priority support" data-ar="دعم الأولوية">Priority support</span></li>
+                                <li class="mb-2"><i class="fas fa-check me-2"></i> <span data-en="Custom development options" data-ar="خيارات التطوير المخصص">Custom development options</span></li>
+                            </ul>
+                            <p class="text-center mt-3"><small data-en="Ideal for growing businesses" data-ar="مثالي للشركات النامية">Ideal for growing businesses</small></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row mt-4">
+                <div class="col-lg-12 text-center" data-aos="fade-up">
+                    <p data-en="All packages include technical support and regular software updates" data-ar="تشمل جميع الباقات الدعم الفني والتحديثات البرمجية المنتظمة">All packages include technical support and regular software updates</p>
+                    <p class="powered-by mt-3" data-en="Powered by Vortigate" data-ar="مدعوم من فورتي جيت">Powered by Vortigate</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Benefits Section -->
+    <section id="benefits" class="section-padding">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center mb-5" data-aos="fade-up">
+                    <h2 class="section-title" data-en="Key Benefits of Vortishop" data-ar="الفوائد الرئيسية لفورتي شوب">Key Benefits of Vortishop</h2>
+                    <p class="section-subtitle" data-en="Potential Improvement (%)" data-ar="التحسين المحتمل (%)">Potential Improvement (%)</p>
+                </div>
+            </div>
+            <div class="row mb-5">
+                <div class="col-lg-3 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="100">
+                    <div class="stats-card">
+                        <div class="stats-number">35%</div>
+                        <h4 data-en="Operational Efficiency" data-ar="الكفاءة التشغيلية">Operational Efficiency</h4>
+                        <div class="progress mt-3">
+                            <div class="progress-bar" style="width: 35%"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="200">
+                    <div class="stats-card">
+                        <div class="stats-number">42%</div>
+                        <h4 data-en="Customer Satisfaction" data-ar="رضا العملاء">Customer Satisfaction</h4>
+                        <div class="progress mt-3">
+                            <div class="progress-bar" style="width: 42%"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="300">
+                    <div class="stats-card">
+                        <div class="stats-number">28%</div>
+                        <h4 data-en="Revenue Growth" data-ar="نمو الإيرادات">Revenue Growth</h4>
+                        <div class="progress mt-3">
+                            <div class="progress-bar" style="width: 28%"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="400">
+                    <div class="stats-card">
+                        <div class="stats-number">25%</div>
+                        <h4 data-en="Cost Reduction" data-ar="تخفيض التكاليف">Cost Reduction</h4>
+                        <div class="progress mt-3">
+                            <div class="progress-bar" style="width: 25%"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12 text-center mb-4" data-aos="fade-up">
+                    <p class="text-muted" data-en="*Potential improvement based on industry averages" data-ar="*التحسين المحتمل بناءً على متوسطات الصناعة">*Potential improvement based on industry averages</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-4 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="100">
+                    <div class="benefit-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-cogs"></i>
+                        </div>
+                        <h4 data-en="Streamlined Operations" data-ar="عمليات مبسطة">Streamlined Operations</h4>
+                        <p data-en="Centralized management of orders, inventory, and sales in one integrated platform reduces manual work and errors." data-ar="تقليل العمل اليدوي والأخطاء من خلال الإدارة المركزية للطلبات والمخزون والمبيعات في منصة متكاملة واحدة.">Centralized management of orders, inventory, and sales in one integrated platform reduces manual work and errors.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="200">
+                    <div class="benefit-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-smile"></i>
+                        </div>
+                        <h4 data-en="Enhanced Customer Experience" data-ar="تجربة عملاء محسنة">Enhanced Customer Experience</h4>
+                        <p data-en="Digital ordering, faster service, and consistent quality across all customer touchpoints drive satisfaction and loyalty." data-ar="قيادة الرضا والولاء من خلال الطلب الرقمي والخدمة الأسرع والجودة المتسقة عبر جميع نقاط اتصال العملاء.">Digital ordering, faster service, and consistent quality across all customer touchpoints drive satisfaction and loyalty.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="300">
+                    <div class="benefit-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <h4 data-en="Increased Revenue Opportunities" data-ar="زيادة فرص الإيرادات">Increased Revenue Opportunities</h4>
+                        <p data-en="Expanded reach through e-commerce and improved efficiency enables businesses to handle more orders and grow sales." data-ar="تمكين الشركات من التعامل مع المزيد من الطلبات ونمو المبيعات من خلال التوسع عبر التجارة الإلكترونية وتحسين الكفاءة.">Expanded reach through e-commerce and improved efficiency enables businesses to handle more orders and grow sales.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="400">
+                    <div class="benefit-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-chart-pie"></i>
+                        </div>
+                        <h4 data-en="Data-Driven Decision Making" data-ar="اتخاذ قرارات قائمة على البيانات">Data-Driven Decision Making</h4>
+                        <p data-en="Comprehensive analytics provide insights into sales trends, customer behavior, and inventory performance." data-ar="توفير رؤى حول اتجاهات المبيعات وسلوك العملاء وأداء المخزون من خلال التحليلات الشاملة.">Comprehensive analytics provide insights into sales trends, customer behavior, and inventory performance.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="500">
+                    <div class="benefit-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-expand-arrows-alt"></i>
+                        </div>
+                        <h4 data-en="Scalability and Flexibility" data-ar="قابلية التوسع والمرونة">Scalability and Flexibility</h4>
+                        <p data-en="Modular design allows businesses to start with essential features and expand as needs evolve and grow." data-ar="السماح للشركات بالبدء بالميزات الأساسية والتوسع مع تطور احتياجاتها ونموها من خلال التصميم المعياري.">Modular design allows businesses to start with essential features and expand as needs evolve and grow.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="row mt-4">
+                <div class="col-lg-12 text-center" data-aos="fade-up">
+                    <p class="powered-by" data-en="Powered by Vortigate" data-ar="مدعوم من Vortigate">Powered by Vortigate</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Future Section -->
+    <section class="section-padding bg-light-gray">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center mb-5" data-aos="fade-up">
+                    <h2 class="section-title" data-en="The Future of Business Management" data-ar="مستقبل إدارة الأعمال">The Future of Business Management</h2>
+                    <p class="section-subtitle" data-en="Embrace digital transformation with Vortishop" data-ar="تبنى التحول الرقمي مع فورتي شوب">Embrace digital transformation with Vortishop</p>
+                </div>
+            </div>
+            <div class="row align-items-center">
+                <div class="col-lg-6 mb-4" data-aos="fade-right">
+                    <p class="mb-4" data-en="Vortishop represents a significant leap forward in business management solutions, offering:" data-ar="يمثل فورتي شوب قفزة كبيرة إلى الأمام في حلول إدارة الأعمال، ويقدم:">
+                        Vortishop represents a significant leap forward in business management solutions, offering:
+                    </p>
+                    <ul class="list-unstyled">
+                        <li class="mb-3"><i class="fas fa-check-circle me-2"></i> <span data-en="A holistic and integrated platform for all operational needs" data-ar="منصة شاملة ومتكاملة لجميع الاحتياجات التشغيلية">A holistic and integrated platform for all operational needs</span></li>
+                        <li class="mb-3"><i class="fas fa-check-circle me-2"></i> <span data-en="Seamless customer experiences across physical and digital touchpoints" data-ar="تجارب عملاء سلسة عبر نقاط الاتصال المادية والرقمية">Seamless customer experiences across physical and digital touchpoints</span></li>
+                        <li class="mb-3"><i class="fas fa-check-circle me-2"></i> <span data-en="Scalable solutions that grow with your business" data-ar="حلول قابلة للتوسع تنمو مع عملك">Scalable solutions that grow with your business</span></li>
+                        <li class="mb-3"><i class="fas fa-check-circle me-2"></i> <span data-en="Data-driven insights for strategic decision making" data-ar="رؤى قائمة على البيانات لاتخاذ قرارات استراتيجية">Data-driven insights for strategic decision making</span></li>
+                    </ul>
+                    <p class="mt-4" data-en="By embracing Vortishop, businesses position themselves at the forefront of digital transformation, ready to meet evolving customer expectations and market demands." data-ar="من خلال تبني فورتي شوب، تضع الشركات نفسها في طليعة التحول الرقمي، جاهزة للقاء توقعات العملاء المتطورة ومتطلبات السوق.">
+                        By embracing Vortishop, businesses position themselves at the forefront of digital transformation, ready to meet evolving customer expectations and market demands.
+                    </p>
+                    <blockquote class="blockquote mt-4 p-4 bg-white rounded shadow">
+                        <p class="mb-0" data-en="Vortishop isn't just a product; it's a strategic partner for businesses ready to embrace the future of commerce." data-ar="فورتي شوب ليس مجرد منتج؛ إنه شريك استراتيجي للشركات المستعدة لتبني مستقبل التجارة.">
+                            Vortishop isn't just a product; it's a strategic partner for businesses ready to embrace the future of commerce.
+                        </p>
+                    </blockquote>
+                </div>
+                <div class="col-lg-6 text-center" data-aos="fade-left">
+                    <img src="assets/future-image.jpg" alt="Future of Business Management" class="feature-image">
+                </div>
+            </div>
+            <div class="row mt-4">
+                <div class="col-lg-12 text-center" data-aos="fade-up">
+                    <p class="powered-by" data-en="Powered by Vortigate" data-ar="مدعوم من Vortigate">Powered by Vortigate</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section-padding bg-primary">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center text-white mb-5" data-aos="fade-up">
+                    <h2 class="section-title text-white" data-en="Get Started with Vortishop" data-ar="ابدأ مع فورتي شوب">Get Started with Vortishop</h2>
+                    <p class="lead" data-en="Ready to transform your business operations?" data-ar="هل أنت مستعد لتحويل عمليات عملك؟">Ready to transform your business operations?</p>
+                </div>
+            </div>
+            <div class="row justify-content-center text-white">
+                <div class="col-lg-8 text-center" data-aos="fade-up" data-aos-delay="200">
+                    <div class="contact-info mb-4">
+                        <p class="mb-2"><i class="fas fa-globe me-2"></i> www.vortishop.com</p>
+                        <p class="mb-2"><i class="fas fa-envelope me-2"></i> sales@vortigate.com</p>
+                        <p class="mb-2"><i class="fas fa-phone me-2"></i> +962 781313782</p>
+                        <p class="mb-2"><i class="fas fa-map-marker-alt me-2"></i> Amman, Jordan</p>
+                    </div>
+                    <a href="#" class="btn btn-light btn-lg mt-3" data-en="Contact Us Today" data-ar="اتصل بنا اليوم">Contact Us Today</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 mb-4" data-aos="fade-up">
+                    <img src="assets/logo.png" alt="Vortishop Logo" class="footer-logo">
+                    <p data-en="The All-in-One Solution for Modern Businesses" data-ar="الحل الشامل للأعمال الحديثة">The All-in-One Solution for Modern Businesses</p>
+                </div>
+                <div class="col-lg-4 mb-4" data-aos="fade-up" data-aos-delay="100">
+                    <h5 data-en="Quick Links" data-ar="روابط سريعة">Quick Links</h5>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><a href="#home" data-en="Home" data-ar="الرئيسية">Home</a></li>
+                        <li class="mb-2"><a href="#about" data-en="About" data-ar="من نحن">About</a></li>
+                        <li class="mb-2"><a href="#features" data-en="Features" data-ar="الميزات">Features</a></li>
+                        <li class="mb-2"><a href="#packages" data-en="Packages" data-ar="الباقات">Packages</a></li>
+                        <li class="mb-2"><a href="#benefits" data-en="Benefits" data-ar="الفوائد">Benefits</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-4 mb-4" data-aos="fade-up" data-aos-delay="200">
+                    <h5 data-en="Connect With Us" data-ar="تواصل معنا">Connect With Us</h5>
+                    <div class="social-links">
+                        <a href="#" class="text-white me-3"><i class="fab fa-facebook-f"></i></a>
+                        <!-- <a href="#" class="text-white me-3"><i class="fab fa-twitter"></i></a> -->
+                        <a href="#" class="text-white me-3"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" class="text-white me-3"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+            <hr class="bg-light my-4">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <p class="mb-0" data-en="&copy; 2023 Vortishop. All Rights Reserved." data-ar="&copy; 2023 VORTISHOP. جميع الحقوق محفوظة.">&copy; 2023 Vortishop. All Rights Reserved.</p>
+                    <p class="powered-by" data-en="Powered by Vortigate" data-ar="مدعوم من VORTIGATE">Powered by Vortigate</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- AOS Animation JS -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    
+    <!-- Custom JS -->
+    <script>
+        // Initialize AOS
+        AOS.init({
+            duration: 1000,
+            once: true,
+            offset: 100
+        });
+        
+        document.addEventListener('DOMContentLoaded', function() {
+            // Language toggle functionality
+            const langToggle = document.getElementById('langToggle');
+            const html = document.documentElement;
+            let currentLang = 'en';
+            
+            langToggle.addEventListener('click', function() {
+                if (currentLang === 'en') {
+                    currentLang = 'ar';
+                    html.setAttribute('lang', 'ar');
+                    html.setAttribute('dir', 'rtl');
+                    langToggle.textContent = 'English';
+                    translatePage('ar');
+                } else {
+                    currentLang = 'en';
+                    html.setAttribute('lang', 'en');
+                    html.setAttribute('dir', 'ltr');
+                    langToggle.textContent = 'العربية';
+                    translatePage('en');
+                }
+            });
+            
+            function translatePage(lang) {
+                const elements = document.querySelectorAll('[data-en][data-ar]');
+                elements.forEach(element => {
+                    if (lang === 'en') {
+                        element.textContent = element.getAttribute('data-en');
+                    } else {
+                        element.textContent = element.getAttribute('data-ar');
+                    }
+                });
+            }
+            
+            // Smooth scrolling for navigation links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        window.scrollTo({
+                            top: target.offsetTop - 70,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+            
+            // Add active class to navigation items on scroll
+            window.addEventListener('scroll', function() {
+                const sections = document.querySelectorAll('section');
+                const navItems = document.querySelectorAll('.navbar-nav .nav-link');
+                
+                let current = '';
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop;
+                    const sectionHeight = section.clientHeight;
+                    if (pageYOffset >= (sectionTop - 100)) {
+                        current = section.getAttribute('id');
+                    }
+                });
+                
+                navItems.forEach(item => {
+                    item.classList.remove('active');
+                    if (item.getAttribute('href').slice(1) === current) {
+                        item.classList.add('active');
+                    }
+                });
+            });
+            
+            // Video play functionality
+            const playButton = document.getElementById('playButton');
+            const video = document.getElementById('explainerVideo');
+            
+            playButton.addEventListener('click', function() {
+                video.play();
+                playButton.style.display = 'none';
+            });
+            
+            // Show play button when video ends
+            video.addEventListener('ended', function() {
+                playButton.style.display = 'flex';
+            });
+            
+            // Navbar background on scroll
+            window.addEventListener('scroll', function() {
+                const navbar = document.querySelector('.navbar');
+                if (window.scrollY > 50) {
+                    navbar.style.padding = '10px 0';
+                    navbar.style.boxShadow = '0 5px 20px rgba(0,0,0,0.1)';
+                } else {
+                    navbar.style.padding = '15px 0';
+                    navbar.style.boxShadow = '0 2px 10px rgba(0,0,0,0.1)';
+                }
+            });
+        });
+    </script>
+</body>
+</html>
